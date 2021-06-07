@@ -150,14 +150,14 @@ def parse_input_assets(external_inputs: List):
 
 
 #------------------------------------------------------------
-
-if __name__ == "__main__":
+# For local testing direcly with Spark
+#if __name__ == "__main__":
   
 
-  input_data_json = [{"fileFormat":"CSV", "fileUrl":"/titanic/data/train.csv"},{"fileFormat":"CSV", "fileUrl":"/titanic/data/test.csv"}]
-  output_list = []
-  external_assets_list = []
+#  input_data_json = [{"fileFormat":"CSV", "fileUrl":"/titanic/data/train.csv"},{"fileFormat":"CSV", "fileUrl":"/titanic/data/test.csv"}]
+#  output_list = []
+#  external_assets_list = []
   
-  train(input_data_json, output_list,external_assets_list)
+#  train(input_data_json, output_list,external_assets_list)
 
   
