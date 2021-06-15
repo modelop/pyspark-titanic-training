@@ -25,7 +25,7 @@ def train(external_inputs: List, external_outputs: List, external_model_assets: 
 
 
   input_train_asset_path, input_test_asset_path = parse_input_assets(external_inputs)
-  
+
   train = spark.read.csv(input_train_asset_path, header = True, inferSchema=True)
   test = spark.read.csv(input_test_asset_path, header = True, inferSchema=True)
   train.show()
