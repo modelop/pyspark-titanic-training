@@ -32,6 +32,8 @@ def train(external_inputs: List, external_outputs: List, external_model_assets: 
 
   #titanic_df = spark.read.csv(input_train_asset_path, header = True, inferSchema=True)
   titanic_df = spark.read.format("csv").option("header", "true").load(input_train_asset_path)
+  titanic_df.printSchema()
+
   titanic_df.groupBy("Survived").count().show()
   gropuBy_output = titanic_df.groupBy("Survived").count()
 
