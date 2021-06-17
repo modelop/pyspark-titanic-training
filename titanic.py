@@ -25,12 +25,8 @@ def train(external_inputs: List, external_outputs: List, external_model_assets: 
 
 
   input_train_asset_path, input_test_asset_path = parse_input_assets(external_inputs)
+  output_asset_path = parse_output_assets(external_model_assets)
 
-  #train = spark.read.csv(input_train_asset_path, header = True, inferSchema=True)
-  #test = spark.read.csv(input_test_asset_path, header = True, inferSchema=True)
-  #train.show()
-
-  #titanic_df = spark.read.csv(input_train_asset_path, header = True, inferSchema=True)
   titanic_df = spark.read.format("csv").option("header", "true").option("inferSchema","true").load(input_train_asset_path)
   titanic_df.printSchema()
 
@@ -102,7 +98,7 @@ def train(external_inputs: List, external_outputs: List, external_model_assets: 
   lrModel = lr.fit(trainingData)
 
   ## Saving trained model into HDFS using output definition
-  lrModel.save("hdfs:///data/output.model")
+  lrModel.save(output_asset_path)
 
   lr_prediction = lrModel.transform(testData)
   lr_prediction.select("prediction", "Survived", "features").show()
@@ -155,6 +151,19 @@ def parse_input_assets(external_inputs: List):
 
     return (input_train_asset_path, input_tests_asset_path)
 
+
+def parse_output_assets(external_outputs: List):
+    """Returns (output asset hdfs path)"""
+
+    # Fail if more assets than expected
+    if len(external_outputs) != 1:
+        raise ValueError("Only one output asset should be provided")
+
+    output_asset = external_outputs[0]
+
+    # Return output_asset_path from file URL
+    output_asset_path = output_asset["fileUrl"]
+    return output_asset_path
 
 #------------------------------------------------------------
 # For local testing direcly with Spark
