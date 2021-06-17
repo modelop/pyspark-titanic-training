@@ -102,7 +102,7 @@ def train(external_inputs: List, external_outputs: List, external_model_assets: 
   lrModel = lr.fit(trainingData)
 
   ## Saving trained model into HDFS using output definition
-  lrModel.save(spark,"/data/output.model")
+  lrModel.save("hdfs:///data/output.model")
 
   lr_prediction = lrModel.transform(testData)
   lr_prediction.select("prediction", "Survived", "features").show()
