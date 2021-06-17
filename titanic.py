@@ -25,7 +25,7 @@ def train(external_inputs: List, external_outputs: List, external_model_assets: 
 
 
   input_train_asset_path, input_test_asset_path = parse_input_assets(external_inputs)
-  output_asset_path = parse_output_assets(external_model_assets)
+  output_asset_path = parse_output_assets(external_outputs)
 
   titanic_df = spark.read.format("csv").option("header", "true").option("inferSchema","true").load(input_train_asset_path)
   titanic_df.printSchema()
