@@ -100,6 +100,10 @@ def train(external_inputs: List, external_outputs: List, external_model_assets: 
   lr = LogisticRegression(labelCol="Survived", featuresCol="features")
   #Training algo
   lrModel = lr.fit(trainingData)
+
+  ## Saving trained model into HDFS using output definition
+  lrModel.save(spark,"/data/output.model")
+
   lr_prediction = lrModel.transform(testData)
   lr_prediction.select("prediction", "Survived", "features").show()
   evaluator = MulticlassClassificationEvaluator(labelCol="Survived", predictionCol="prediction", metricName="accuracy")
