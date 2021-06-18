@@ -111,7 +111,8 @@ def train(external_inputs: List, external_outputs: List, external_model_assets: 
 
 
 
-
+#------------------------------------------------------------
+# Helper functions
 def null_value_count(df):
   """ count the null values """
   null_columns_counts = []
@@ -124,7 +125,8 @@ def null_value_count(df):
   return(null_columns_counts)
 
 
-
+#------------------------------------------------------------
+# Input / Output parsers
 def parse_input_assets(external_inputs: List):
     """Returns a tuple (input train asset hdfs path, input test asset hdfs path)"""
 
@@ -165,15 +167,5 @@ def parse_output_assets(external_outputs: List):
     output_asset_path = output_asset["fileUrl"]
     return output_asset_path
 
-#------------------------------------------------------------
-# For local testing direcly with Spark
-#if __name__ == "__main__":
-  
-
-#  input_data_json = [{"fileFormat":"CSV", "fileUrl":"/titanic/data/train.csv"},{"fileFormat":"CSV", "fileUrl":"/titanic/data/test.csv"}]
-#  output_list = []
-#  external_assets_list = []
-  
-#  train(input_data_json, output_list,external_assets_list)
 
   
