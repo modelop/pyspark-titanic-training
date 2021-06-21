@@ -17,7 +17,7 @@ There are three assets that are used to run this example:
 ## Mocaasin Tests
 
 1. Verify that the input asset 1 `train.csv` and input asset 2 `test.csv` (above) exists at `/hadoop/demo/pyspark-titanic-training/data/` in the Spark cluster HDFS. The input asset can be in a different location, but you must update the input asset URL in testing steps below.
-2. Import this repository to ModelOp Center, selecting external repository as HDFS.
+2. Import this repository to ModelOp Center, selecting `External Attachments Storage Type` as HDFS.
 
 ### Test Training Job
 1. Create a new training job with the following HDFS URL assets:
