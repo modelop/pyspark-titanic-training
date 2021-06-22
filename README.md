@@ -9,9 +9,9 @@ There are three assets that are used to run this example:
 | Asset Type | Repo File | HDFS Path | Description |
 | --- | --- | --- | --- |
 | Model source code | `titanic.py` | - | Pyspark code to train a model with `LogisticRegression` using the titanic dataset. |
-| Input Asset1 | `train.csv` | `/hadoop/demo/pyspark-titanic-training/data/` | Input file for the model `fit()` function. The HDFS path can vary based on the `external_inputs` param of the `train()` function  |
-| Input Asset2 | `test.csv` | `/hadoop/demo/pyspark-titanic-training/data/` | Test data. The HDFS path can vary based on the `external_inputs` param of the `train()` function  |
-| Output Asset | `output.model` | `/hadoop/demo/pyspark-titanic-training/` | Output file from the model `train()` function. The HDFS path can vary based on the `external_outputs` param of the `train()` function  |
+| Input Asset1 | `train.csv` | `/hadoop/demo/pyspark-titanic-training/data/train.csv` | Input file for the model `fit()` function. The HDFS path can vary based on the `external_inputs` param of the `train()` function  |
+| Input Asset2 | `test.csv` | `/hadoop/demo/pyspark-titanic-training/data/test.csv` | Test data. The HDFS path can vary based on the `external_inputs` param of the `train()` function  |
+| Output Asset | `output.model` | `/hadoop/demo/pyspark-titanic-training/output.model` | Output file from the model `train()` function. The HDFS path can vary based on the `external_outputs` param of the `train()` function  |
 
 
 ## Mocaasin Tests
